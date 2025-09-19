@@ -207,25 +207,24 @@ class SA:
         
         itens_selecionados = [itens[i] for i in range(len(melhor_solucao)) if melhor_solucao[i] == 1]
         
-        if mostrar_processo:
-            print(f"✅ Melhor valor encontrado: R$ {melhor_fitness:.2f}")
-            print(f"⚖️  Peso utilizado: {melhor_peso:.2f}kg / {capacidade_maxima}kg ({(melhor_peso/capacidade_maxima)*100:.1f}%)")
-            print(f"📈 Eficiência: {(melhor_fitness/melhor_peso):.2f} valor/kg")
-            print(f"🔢 Total de iterações: {iteracao_global}")
-            print(f"🌡️  Ciclos de temperatura: {ciclo_temperatura}")
-            print(f"✅ Soluções aceitas: {aceitos_total} ({(aceitos_total/iteracao_global)*100:.1f}%)")
-            print(f"❌ Soluções rejeitadas: {rejeitados_total} ({(rejeitados_total/iteracao_global)*100:.1f}%)")
-            print(f"🎒 Itens selecionados: {len(itens_selecionados)}")
-            
-            print(f"\n📋 COMPOSIÇÃO FINAL DA MOCHILA:")
-            valor_check = 0
-            peso_check = 0
-            
-            for i, item in enumerate(itens_selecionados, 1):
-                print(f"{i:2d}. {item.nome:8s}: R${item.valor:6.2f} ({item.peso:5.1f}kg) | Ratio: {item.ratio_valor_peso():5.2f}")
-                valor_check += item.valor
-                peso_check += item.peso
-            
-            print(f"\n🧮 Verificação: R$ {valor_check:.2f} | {peso_check:.1f}kg")
+        print(f"\n✅ Melhor valor encontrado: R$ {melhor_fitness:.2f}")
+        print(f"⚖️  Peso utilizado: {melhor_peso:.2f}kg / {capacidade_maxima}kg ({(melhor_peso/capacidade_maxima)*100:.1f}%)")
+        print(f"📈 Eficiência: {(melhor_fitness/melhor_peso):.2f} valor/kg")
+        print(f"🔢 Total de iterações: {iteracao_global}")
+        print(f"🌡️  Ciclos de temperatura: {ciclo_temperatura}")
+        print(f"✅ Soluções aceitas: {aceitos_total} ({(aceitos_total/iteracao_global)*100:.1f}%)")
+        print(f"❌ Soluções rejeitadas: {rejeitados_total} ({(rejeitados_total/iteracao_global)*100:.1f}%)")
+        print(f"🎒 Itens selecionados: {len(itens_selecionados)}")
+
+        print(f"\n📋 COMPOSIÇÃO FINAL DA MOCHILA:")
+        valor_check = 0
+        peso_check = 0
+        
+        for i, item in enumerate(itens_selecionados, 1):
+            print(f"{i:2d}. {item.nome:8s}: R${item.valor:6.2f} ({item.peso:5.1f}kg) | Ratio: {item.ratio_valor_peso():5.2f}")
+            valor_check += item.valor
+            peso_check += item.peso
+        
+        print(f"\n🧮 Verificação: R$ {valor_check:.2f} | {peso_check:.1f}kg")
         
         return melhor_solucao, melhor_fitness, melhor_peso, historico
